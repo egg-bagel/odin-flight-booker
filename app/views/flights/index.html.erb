@@ -1,0 +1,18 @@
+<h1>Search for Flights</h1>
+
+<%= form_with url: "/", method: "get" do |form| %>
+<p>hi</p>
+<%= form.label "Departure airport:" %>
+<%= select_tag(:departure_airport_id, options_for_select(@airport_options)) %><br>
+
+<%= form.label "Arrival airport:" %>
+<%= select_tag(:arrival_airport_id, options_for_select(@airport_options)) %><br>
+
+<%= form.label "Number of passengers: " %>
+<%= form.select :number_of_passengers, [1, 2, 3, 4] %><br>
+
+<%= form.label "Date of flight:" %>
+<%= select_tag(:date, options_for_select(@departure_dates)) %>
+
+<%= form.submit "Submit" %>
+<% end %>
