@@ -1,24 +1,8 @@
-# README
+This is the flight booker project from The Odin Project's Ruby on Rails course.
+The project information can be found here: https://www.theodinproject.com/lessons/ruby-on-rails-flight-booker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The objective of this project is to get practice with the following skills:
+-Using nested forms to send information
+-Prepopulating form select fields with data
+-Using the db/seeds.rb file to populate the database
+-Working with dates
