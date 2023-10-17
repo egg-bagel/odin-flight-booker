@@ -1,18 +1,34 @@
 <h1>Search for Flights</h1>
 
-<%= form_with url: "/", method: "get" do |form| %>
-<p>hi</p>
-<%= form.label "Departure airport:" %>
-<%= select_tag(:departure_airport_id, options_for_select(@airport_options)) %><br>
+<div class="search-form">
+  <%= form_with url: "/", method: "get" do |form| %>
+    <p>hi</p>
+    <%= form.label "Departure airport:" %>
+    <%= select_tag(:departure_airport_id, options_for_select(@airport_options)) %><br>
 
-<%= form.label "Arrival airport:" %>
-<%= select_tag(:arrival_airport_id, options_for_select(@airport_options)) %><br>
+    <%= form.label "Arrival airport:" %>
+    <%= select_tag(:arrival_airport_id, options_for_select(@airport_options)) %><br>
 
-<%= form.label "Number of passengers: " %>
-<%= form.select :number_of_passengers, [1, 2, 3, 4] %><br>
+    <%= form.label "Number of passengers: " %>
+    <%= form.select :number_of_passengers, [1, 2, 3, 4] %><br>
 
-<%= form.label "Date of flight:" %>
-<%= select_tag(:date, options_for_select(@departure_dates)) %>
+    <%= form.label "Date of flight:" %>
+    <%= select_tag(:date, options_for_select(@departure_dates)) %><br>
 
-<%= form.submit "Submit" %>
-<% end %>
+    <%= form.submit "Submit" %>
+  <% end %>
+</div>
+
+<div class="search-results">
+  <%= form_with url:"/", method:"get" do |form| %>
+    <% @flights.each do |flight| %>
+      <%= form.radio_button :flight_id, flight.id %>
+      <p><%= flight.departure_airport.code %> to <%= flight.arrival_airport.code %></p>
+      <p>Date: <%= flight.departure_time_to_date %></p>
+      <p>Departure time: <%= flight.departure_time.strftime("%H:%M:%S") %></p>
+      <p>Duration: <%= flight.flight_duration %></p>
+    <% end %>
+    <% form.hidden_field :number_of_passengers, :value => params[:number_of_passengers].to_i %>
+    <%= form.submit "Submit" %>
+  <% end %>
+</div>

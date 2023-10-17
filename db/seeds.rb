@@ -28,7 +28,7 @@ flights = Flight.create!([
    flight_duration: "1h 32m",
    departure_airport: Airport.find(4),
    arrival_airport: Airport.find(3)},
-  {departure_time: DateTime.new(2023, 11, 03, 06, 30, 00),
+  {departure_time: DateTime.new(2023, 11, 3, 6, 30, 0),
    flight_duration: "4h 11m",
    departure_airport: Airport.find(1),
    arrival_airport: Airport.find(4)}
