@@ -1,0 +1,21 @@
+<h1>Complete your booking</h1>
+
+<%= form_with model: @booking, url: "/bookings", method: "post" do |form| %>
+  <p>Departing from: <%= @flight.departure_airport.code %></p><br>
+  <p>Arriving at: <%= @flight.arrival_airport.code %></p><br>
+  <p>Flight date: <%= @flight.departure_time_to_date %></p><br>
+  <p>Flight time: <%= @flight.departure_time.strftime("%H:%M:%S") %></p><br>
+  <p>Flight id: <%= @flight.id %></p><br>
+
+  <p>Enter information for each passenger below:</p><br>
+    <%= form.fields_for :passengers do |passenger_subform| %>
+      <%= passenger_subform.label "First and last name: " %>
+      <%= passenger_subform.text_field :name %><br>
+      <%= passenger_subform.label "Email address: " %>
+      <%= passenger_subform.text_field :email %><br>
+      <br>
+    <% end %>
+  <%= form.hidden_field :flight_id, :value => @flight.id %>
+
+  <%= form.submit "Submit" %>
+<% end %>

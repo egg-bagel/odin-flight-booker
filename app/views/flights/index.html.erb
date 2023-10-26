@@ -20,7 +20,7 @@
 </div>
 
 <div class="search-results">
-  <%= form_with url:"/", method:"get" do |form| %>
+  <%= form_with url:"/bookings/new", method:"get" do |form| %>
     <% @flights.each do |flight| %>
       <%= form.radio_button :flight_id, flight.id %>
       <p><%= flight.departure_airport.code %> to <%= flight.arrival_airport.code %></p>
@@ -28,7 +28,7 @@
       <p>Departure time: <%= flight.departure_time.strftime("%H:%M:%S") %></p>
       <p>Duration: <%= flight.flight_duration %></p>
     <% end %>
-    <% form.hidden_field :number_of_passengers, :value => params[:number_of_passengers].to_i %>
+    <%= form.hidden_field :number_of_passengers, :value => params[:number_of_passengers] %>
     <%= form.submit "Submit" %>
   <% end %>
 </div>

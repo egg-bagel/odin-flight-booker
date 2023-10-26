@@ -1,0 +1,15 @@
+<h1>Your Booking</h1>
+
+<h2>Flight Information</h2>
+<% booking = Booking.find(params[:id]) %>
+<p>Departing from: <%= booking.flight.departure_airport.code %></p><br>
+<p>Arriving at: <%= booking.flight.arrival_airport.code %></p><br>
+<p>Flight date: <%= booking.flight.departure_time_to_date %></p><br>
+<p>Flight time: <%= booking.flight.departure_time.strftime("%H:%M:%S") %></p><br>
+<p>Flight id: <%= booking.flight.id %></p><br>
+
+<h2>Passenger Information</h2>
+<% booking.passengers.each do |passenger| %>
+  <p>Name: <%= passenger.name %></p><br>
+  <p>Email: <%= passenger.email %></p><br>
+<% end %>
